@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>Edit appointments</title>
+</head>
+
+<body>
+    <a style="text-align: right" href="/logout">Logout</a> | <a style="text-align: right" href="/display_appointments">Dashboard</a>
+    <form action="/update_appointment/{{ appointment.id }}" method="post">
+        {% csrf_token %}
+        <label for="name">Tasks:</label>
+        <input type="text" name="name" id="name" value="{{ appointment.name }}"><br>
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option selected ="selected"  value="{{ appointment.status }}"> {{ appointment.status }}</option>
+            <option value="Done">Done</option>
+            <option value="Missed">Missed</option>
+        </select>
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" value="{{ date }}"><br>
+        <label for="time">Time:</label>
+        <input type="time" name="time" id="time" value="{{ time }}" selected="selected"><br>
+        <input type='submit' value='Update'>
+</body>
+
+</html>
